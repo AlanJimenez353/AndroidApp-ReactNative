@@ -23,13 +23,11 @@ export const Register= ()=>{
         .catch((error) => {
             const errorCode=error.code;
             const errorMessage=error.message;
-            console.log(console.log(errorCode,errorMessage))
-            console.log("error")
             setError({error})
         });
 
     }
-    console.log(form)
+    console.log(error)
 
 
 
@@ -64,7 +62,7 @@ export const Register= ()=>{
                         onChangeText={text=>setForm({...form,confirmPass:text})}
                         value={form.confirmPass}> 
             </TextInput>
-            {error !=="" && <Text>{error.message}</Text>}
+            {error !=="" && <Text>{error.error.message}</Text>}
             <TouchableOpacity style={styles.button} onPress={()=>handlePress()}>
                 <Text style={styles.textButton}>
                 Register
