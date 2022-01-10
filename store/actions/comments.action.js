@@ -28,7 +28,6 @@ export const getComments= async(dispatch)=>{
                 type: GET_COMMENTS,
                 payload:comments
             })
-            console.log(comments)
         })
         
     }catch(error){

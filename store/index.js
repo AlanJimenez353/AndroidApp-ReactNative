@@ -5,6 +5,7 @@ import  thunkMiddleware  from 'redux-thunk'
 import CategoriesReducer from './reducers/categorie.reducer'
 import CommentsReducer from './reducers/comments.reducer'
 
+
 const composedEnhancer=composeWithDevTools(applyMiddleware(thunkMiddleware))
 
 

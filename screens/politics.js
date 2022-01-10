@@ -8,21 +8,28 @@ import { getCategories, selectCategory } from '../store/actions/categories.actio
 import { filterComments } from '../store/actions/comments.action';
 
 
-
 export const politics=()=>{
 
+    //Recibo los comentarios filtrados del CommentAcction
     const dispatch = useDispatch();
     const navigation=useNavigation()
-    const comments=useSelector(state => state.comments)
+    const comments=useSelector(state => state.comments.filterComments)
     console.log(comments)
+
+
+   // useEffect(()=> {
+   //     dispatch(getCategories())
+   // },[])
+
+    
     return(
         <>
-        {filterComments 
+        {comments 
         ? 
            <View>
            <FlatList
-           data={filterComments}
-           keyExtractor={category => category.toString()}
+           data={comments}
+           keyExtractor={Comment => Comment.toString()}
            renderItem={({item}) => {
                return <CategoryButton title={item.comment}></CategoryButton>
            }}

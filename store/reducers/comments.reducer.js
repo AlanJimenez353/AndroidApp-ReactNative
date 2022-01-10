@@ -5,7 +5,6 @@ const initialState={
     comments:[],
     filterComments:[],
     selectedComment:null,
-
 }
 
 
@@ -21,10 +20,9 @@ const CommentsReducer= (state= initialState,action) =>{
         case FILTER_COMMENTS:
             const commentsFiltrados=state.comments.filter(comment => comment.category === action.payload.Name)
             console.log(commentsFiltrados)
-            console.log(state.comments)
 
             return {
-                ...state,
+                 ...state,
                 filterComments:commentsFiltrados
             }
         default:
