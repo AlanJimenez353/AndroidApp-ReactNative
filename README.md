@@ -26,9 +26,8 @@
 ![Screenshot2](imagenes/chat.png)
 > Chat View
 ## --
-![Screenshot3](imagenes/SingIn(1).png)
-> Register View
-
+![Screenshot3](imagenes/SingIn.png)
+>Register View
 
 ## Proximas features:
 -TimeStamp a los comentarios 
