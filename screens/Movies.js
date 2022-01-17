@@ -17,21 +17,25 @@ export const Movies=()=>{
     const dispatch = useDispatch();
     const navigation=useNavigation()
     const comments=useSelector(state => state.comments.filterComments)
-    console.log(comments)
+
+    const [textImput,setTextInput]= useState("")
+    const [list,setList]=useState(comments)
+    console.log(list)
+
+   const onAdd= () =>{
+    console.log("list-->",list)
+    setList([...list,{ id:"adsasdq",user:"asd", comment: textImput,category:"movies"}])
+}
 
 
-   // useEffect(()=> {
-   //     dispatch(getCategories())
-   // },[])
 
-    
     return(
         <>
         {comments 
         ? 
            <View>
            <FlatList
-           data={comments}
+           data={list}
            keyExtractor={Comment => Comment.toString()}
            renderItem={({item}) => {
                return <CategoryButton title={item.comment}></CategoryButton>

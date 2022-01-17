@@ -39,7 +39,7 @@ export const Home=()=>{
            keyExtractor={category => category.toString()}
            renderItem={({item}) => {
                return <CategoryButton title={item.Name} handlePress={() => handleSelectCategory(item)}></CategoryButton>
-           }}
+            }}
            ></FlatList>
            </View> 
 
