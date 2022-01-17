@@ -3,6 +3,7 @@ import React from "react";
 import finances from "../screens/finances";
 import Home from "../screens/Home";
 import { ItemDetail } from "../screens/ItemDetail";
+import { Login } from "../screens/LogIn";
 import Movies from "../screens/Movies";
 import Music from "../screens/Music";
 import politics from "../screens/politics";
@@ -23,6 +24,7 @@ export const HomeStack= ()=>{
                 <Stack.Screen name="Programing" component={Programing} />
                 <Stack.Screen name="Politics" component={politics} />
                 <Stack.Screen name="Finances" component={finances} />
+                <Stack.Screen name="login" component={Login} />
 
 
             </Stack.Navigator>

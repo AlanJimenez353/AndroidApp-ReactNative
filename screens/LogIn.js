@@ -1,46 +1,35 @@
-import React, {Component,useState} from 'react'
-import {StyleSheet,TextInput,TouchableOpacity,View,Text} from 'react-native'
-import { auth } from '../firebase/config'
-import {createUserWithEmailAndPassword,updateProfile} from 'firebase/auth'
-
-export const Register= ()=>{
-    const[form,setForm]=useState({username:"",email:"",password:"",confirmPass:""})
-    const[error,setError] = useState("")
+import React, { useState } from 'react'
+import { TextInput,StyleSheet,View,TouchableOpacity,Text } from 'react-native'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase/config';
 
 
-    const handlePress=()=>{
+export const Login= ()=>{
 
-        createUserWithEmailAndPassword(auth,form.email,form.password)
+    const [form,setForm]=useState({email:"",password:""})
+    const[error,setError]=useState("")
+
+    const handleLogin=()=>{
+
+        signInWithEmailAndPassword(auth, form.email, form.password)
         .then((userCredential) => {
-            //Inicio session user
-            const user=userCredential.user;
-            //generate display and username
-            updateProfile(auth.currentUser,{displayName: form.username })
-        .then(response => console.log(response) )
-        .catch(error => setError(error))
-        .finaly( () => { alert("User Created") });
+            // Signed in 
+            const user = userCredential.user;
+            console.log(userCredential);
+            setForm({email: "", password: ""})
+            // ...
         })
         .catch((error) => {
-            const errorCode=error.code;
-            const errorMessage=error.message;
-            setError({error})
+            console.log(error)
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setError(error.message);
         });
-
-    }
-    console.log(error)
-
-
+}
 
 
     return(
         <View style={styles.container}>
-            <TextInput  style={styles.input} 
-                        placeholder="username"
-                        blurOnSubmit={true}
-                        onChangeText={text=>setForm({...form,username:text})}
-                        value={form.username}> 
-            </TextInput>
-           
             <TextInput  style={styles.input} 
                         placeholder="Email"
                         blurOnSubmit={true}
@@ -55,23 +44,17 @@ export const Register= ()=>{
                         onChangeText={text=>setForm({...form,password:text})}
                         value={form.password}> 
             </TextInput>
-
-            <TextInput  style={styles.input} 
-                        placeholder="Confirm password"
-                        secureTextEntry={true}
-                        onChangeText={text=>setForm({...form,confirmPass:text})}
-                        value={form.confirmPass}> 
-            </TextInput>
             {error !=="" && <Text>{error.error.message}</Text>}
-            <TouchableOpacity style={styles.button} onPress={()=>handlePress()}>
+            <TouchableOpacity style={styles.button} onPress={()=>handleLogin()}>
                 <Text style={styles.textButton}>
-                Register
+                SignIn
                 </Text>
             </TouchableOpacity>
         </View>
     )
 
 }
+
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
@@ -105,3 +88,4 @@ const styles = StyleSheet.create ({
         color: "#212121",
     }
 })
+

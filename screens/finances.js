@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react'
+import {bootstrap } from "react-bootstrap";
 import {View,Text,StyleSheet,TextInput,Button, FlatList, ActivityIndicator} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux'
 import { CategoryButton } from '../components/CategoryButton';
@@ -12,15 +13,17 @@ export const finances=()=>{
 
 
     //Recibo los comentarios filtrados del CommentAcction
-    const [textImput,setTextInput]= useState("")
 
     const dispatch = useDispatch();
     const navigation=useNavigation()
     const comments=useSelector(state => state.comments.filterComments)
-    console.log(comments)
+        
+    const [textImput,setTextInput]= useState("")
+    const [list,setList]=useState(comments)
 
     const onAdd= () =>{
-        
+      console.log("list-->",list)
+     setList([...list,{ id:"adsasdq",user:"asd", comment: textImput,category:"movies"}])
     }
 
    // useEffect(()=> {
@@ -34,7 +37,7 @@ export const finances=()=>{
         ? 
            <View>
            <FlatList
-           data={comments}
+           data={list}
            keyExtractor={Comment => Comment.toString()}
            renderItem={({item}) => {
                return <CategoryButton title={item.comment}></CategoryButton>

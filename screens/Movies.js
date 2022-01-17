@@ -20,7 +20,6 @@ export const Movies=()=>{
 
     const [textImput,setTextInput]= useState("")
     const [list,setList]=useState(comments)
-    console.log(list)
 
    const onAdd= () =>{
     console.log("list-->",list)

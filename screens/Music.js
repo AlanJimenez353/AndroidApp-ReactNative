@@ -23,7 +23,7 @@ export const Music=()=>{
     setList([...list,{ id:"adsasdq",user:"asd", comment: textImput,category:"movies"}])
 }
 
-   // useEffect(()=> {
+   // useEffect (()=> {
    //     dispatch(getCategories())
    // },[])
 
