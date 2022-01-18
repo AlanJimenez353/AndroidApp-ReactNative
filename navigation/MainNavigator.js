@@ -13,6 +13,7 @@ import { getAuth, onAuthStateChanged,signOut } from 'firebase/auth';
 import {useState,useEffect} from 'react'
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Login } from '../screens/LogIn';
+import { Profile } from '../screens/Profile';
 
 export const MainNavigator= () => {
 const Tab=createBottomTabNavigator();
@@ -103,6 +104,10 @@ return(
           name="HomeStack"
           component={HomeStack}
         />
+        <Tab.Screen
+        name="Profile"
+        component={Profile}
+      />
         </>
         :
         <>

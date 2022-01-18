@@ -1,9 +1,10 @@
 import React from "react";
-import { filterComments, FILTER_COMMENTS, GET_COMMENTS } from "../actions/comments.action";
+import { filterComments, FILTER_COMMENTS, GET_COMMENTS,FILTER_COMMENTS_USER } from "../actions/comments.action";
 
 const initialState={
     comments:[],
     filterComments:[],
+    filterCommentsUser:[],
     selectedComment:null,
 }
 
@@ -25,7 +26,14 @@ const CommentsReducer= (state= initialState,action) =>{
                  ...state,
                 filterComments:commentsFiltrados
             }
-        
+            case FILTER_COMMENTS_USER:
+                const commentsFiltradosUser=state.comments.filter(comment => comment.user === action.payload.user.email)
+                console.log(commentsFiltradosUser)
+    
+                return {
+                     ...state,
+                    filterCommentsUser:commentsFiltradosUser
+                }        
         default:
             return{
                 ...state

@@ -7,6 +7,10 @@ import { CategoryButton } from '../components/CategoryButton';
 import { HomeStack } from '../navigation/HomeStack';
 import { getCategories, selectCategory } from '../store/actions/categories.actions';
 import { filterComments } from '../store/actions/comments.action';
+import { addDoc, collection } from 'firebase/firestore/lite';
+import { auth, db } from '../firebase/config';
+
+
 export const Music=()=>{
 
 
@@ -18,11 +22,25 @@ export const Music=()=>{
     const [textImput,setTextInput]= useState("")
     const [list,setList]=useState(comments)
 
-   const onAdd= () =>{
-    console.log("list-->",list)
-    setList([...list,{ id:"adsasdq",user:"asd", comment: textImput,category:"movies"}])
-}
-
+    const onAdd= async() =>{
+        console.log("Music Comments-->",list)
+    
+        const user=auth.currentUser
+        const newComment={
+            comment: textImput,
+            user:user.email,
+            category:"Music"
+        }
+        
+            console.log(newComment)
+        try{
+            const docRef= addDoc(collection(db,"Comments"),newComment)
+            console.log("Document agregado a Firebase with ID: ", docRef.id);
+            setList([...list, newComment])
+        }catch (e) {
+        console.error("Error adding document: ", e.message);
+        }
+    }
    // useEffect (()=> {
    //     dispatch(getCategories())
    // },[])
