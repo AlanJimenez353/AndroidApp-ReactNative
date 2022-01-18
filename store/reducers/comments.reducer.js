@@ -25,6 +25,7 @@ const CommentsReducer= (state= initialState,action) =>{
                  ...state,
                 filterComments:commentsFiltrados
             }
+        
         default:
             return{
                 ...state

@@ -1,9 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
+import { addDoc, collection } from 'firebase/firestore/lite';
 import React, { useEffect, useState } from 'react'
-import {bootstrap } from "react-bootstrap";
+import {bootstrap, Modal } from "react-bootstrap";
 import {View,Text,StyleSheet,TextInput,Button, FlatList, ActivityIndicator} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux'
 import { CategoryButton } from '../components/CategoryButton';
+import { auth, db } from '../firebase/config';
 import { HomeStack } from '../navigation/HomeStack';
 import { getCategories, selectCategory } from '../store/actions/categories.actions';
 import { filterComments } from '../store/actions/comments.action';
@@ -16,11 +18,29 @@ export const politics=()=>{
     const comments=useSelector(state => state.comments.filterComments)
     const [textImput,setTextInput]= useState("")
     const [list,setList]=useState(comments)
+    const [modalVisible,setModalVisible]=useState(false)
+ 
+   const onAdd= async() =>{
+    console.log("Politic Comments-->",list)
 
-   const onAdd= () =>{
-    console.log("list-->",list)
-    setList([...list,{ id:"adsasdq",user:"asd", comment: textImput,category:"movies"}])
+    const user=auth.currentUser
+    const newComment={
+        comment: textImput,
+        user:user.email,
+        category:"Politics"
+    }
+    
+        console.log(newComment)
+    try{
+        const docRef= addDoc(collection(db,"Comments"),newComment)
+        console.log("Document agregado a Firebase with ID: ", docRef.id);
+        setList([...list, newComment])
+
+    }catch (e) {
+    console.error("Error adding document: ", e.message);
+    }
 }
+
 
    // useEffect(()=> {
    //     dispatch(getCategories())

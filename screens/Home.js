@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react'
-import {View,Text, FlatList, ActivityIndicator} from 'react-native'
+import {View,Text, FlatList, ActivityIndicator, Image} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux'
 import { CategoryButton } from '../components/CategoryButton';
 import { HomeStack } from '../navigation/HomeStack';
@@ -28,18 +28,22 @@ export const Home=()=>{
         console.log(category)
         navigation.navigate(category.Name)
     }
-    
     return(
         <>
         {categories 
         ? 
            <View>
+
            <FlatList
            data={categories}
            keyExtractor={category => category.toString()}
            renderItem={({item}) => {
-               return <CategoryButton title={item.Name} handlePress={() => handleSelectCategory(item)}></CategoryButton>
-            }}
+               return(
+                   <>
+               <CategoryButton title={item.Name} handlePress={() => handleSelectCategory(item)}>                      
+
+               </CategoryButton>
+               </>)}}
            ></FlatList>
            </View> 
 
@@ -54,3 +58,5 @@ export const Home=()=>{
 
 }
 export default Home
+
+/// <Image  source={{uri:('./imgs/music.png')}}  style={{ width: "100", height: "100",borderRadius:20,borderColor: '3px solid rgb(0, 221, 221)',borderWidth:3}}/>

@@ -89,6 +89,7 @@ return(
           tabBarActiveTintColor: 'black',
           headerTitleAlign:'center',
           headerRight: ()=>(
+            user && 
             <TouchableOpacity style={StyleSheet.logOut} onPress={()=>handleSignOut()}>
               <SimpleLineIcons name='logout' size={30} color={"black"}></SimpleLineIcons>
             </TouchableOpacity>

@@ -47,7 +47,7 @@ export const Login= ()=>{
             {error !=="" && <Text>{error.error.message}</Text>}
             <TouchableOpacity style={styles.button} onPress={()=>handleLogin()}>
                 <Text style={styles.textButton}>
-                SignIn
+                Ingresar
                 </Text>
             </TouchableOpacity>
         </View>
