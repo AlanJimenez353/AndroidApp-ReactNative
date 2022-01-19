@@ -40,10 +40,11 @@ export const Home=()=>{
            renderItem={({item}) => {
                return(
                    <>
-               <CategoryButton title={item.Name} handlePress={() => handleSelectCategory(item)}>                      
-
-               </CategoryButton>
-               </>)}}
+               <View>
+                 <CategoryButton title={item.Name} handlePress={() => handleSelectCategory(item)}>  </CategoryButton>
+               </View>
+               </>
+               )}}
            ></FlatList>
            </View> 
 

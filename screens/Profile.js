@@ -32,7 +32,8 @@ export const Profile=()=>{
              data={commentsFiltradosUser}
              keyExtractor={Comment => Comment.toString()}
              renderItem={({item}) => {
-                 return <CategoryButton title={item.comment+"     En la categoria ---->   "+item.category}></CategoryButton>
+                 return (
+                 <CategoryButton title={item.comment+"     En la categoria ---->   "+item.category}></CategoryButton>)
              }}
              ></FlatList>
              </View> 
