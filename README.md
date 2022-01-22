@@ -23,11 +23,19 @@
 ![Screenshot1](imagenes/HomeView.jpeg)
 > Home View
 ## --
-![Screenshot2](imagenes/chat.png)
-> Chat View
+![Screenshot2](imagenes/Finances-page.png)
+> Toppic View
 ## --
-![Screenshot3](imagenes/sing.png)
->Register View
+![Screenshot3](imagenes/register.png)
+>Register 
+##
+![Screenshot3](imagenes/Login.png)
+>Login 
+##
+![Screenshot3](imagenes/Profile.png)
+>Profile
+
+
 
 ## Proximas features:
 -TimeStamp a los comentarios 
