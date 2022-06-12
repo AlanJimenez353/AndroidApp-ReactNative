@@ -1,7 +1,7 @@
 ## ChatRoom para dispositivos mobiles creado con React-Native 
 
--Sitio web creado para el curso de React Native en Coderhouse.
--5º curso de la capacitacion FullStack de Technisys Bootcamp. 
+-Sitio web creado para el curso de React Native .
+-5º curso de la capacitacion FullStack. 
 
 ## Construido con:
 
